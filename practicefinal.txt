@@ -1,4 +1,5 @@
-1. Write a method that takes an array of keys and an array of values and creates a corresponding Hashmap.	public HashMap makeMap(E[] keys, E[] values)
+1. Write a method that takes an array of keys and an array of values and creates a corresponding Hashmap.	
+public HashMap makeMap(E[] keys, E[] values)
 {
  HashMap map = new HashMap();
  for(int i = 0; i < keys.size(); i++)
