@@ -1,0 +1,14 @@
+INORDER TRAVERSAL
+inorder(root->left)
+display(root->data)
+inorder(root->right)
+
+PREORDER TRAVERSAL
+display(root->data)
+preorder(root->left)
+preorder(root->right)
+
+POSTORDER TRAVERSAL
+postorder(root->left)
+postorder(root->right)
+display(root->data)

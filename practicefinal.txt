@@ -1,0 +1,349 @@
+1. Write a method that takes an array of keys and an array of values and creates a corresponding Hashmap.	public HashMap makeMap(E[] keys, E[] values)
+{
+ HashMap map = new HashMap();
+ for(int i = 0; i < keys.size(); i++)
+ {
+ map.put(keys[i], values[i]);
+}
+
+return map;
+}
+2. A hash table has buckets 0 to 9 and uses a hash function of key % 10. If the table is initially empty and the following inserts are applied in the order shown, the insert of which item results in a collision?	
+HashInsert(hashTable, item 55) 55 % 10 = 5 collision
+HashInsert(hashTable, item 90) 90 % 10 = 0
+HashInsert(hashTable, item 95) 95 % 10 = 5 collision
+3. Knowing that hash table size is 10 and knowledge of the expected keys is 10, 20, 30, 40, .... How do you think the hash function key % 10 will perform (well or poor)? Why?
+Poor, all these keys result in collision (any of those numbers mod 10 will be equal to 0). The hash function key should be a prime number to reduce collisions.
+
+
+4. Draw the directed graph that corresponds to this adjacency matrix:
+ 0 1 2 3
+ 0 | true false true false 
+ 1 | true false false false 
+ 2 | false false false true 
+ 3 | true false true false	Hand draw this one
+
+
+5. Consider this graph:
+ v0 <------- v2
+ / \
+ / \
+ -> v1 <-/ \-> v4
+ / \ 
+ / \
+ / \->v3 -------> v5
+ / /
+ / /
+ v6 <---------/
+In what order are the vertices visited for a depth-first search that starts at v0? In what order are the vertices visited for a breadth-first search that starts at v0?	This is a directed graph
+df: v0 v1 v3 v6 v5 v4 note: v2 will not be visited if we start at v0
+bf: v0 v1 v4 v3 v6 v5 note: v2 will not be visited if we start at v0
+
+
+6. What is the expected number of operations needed to loop through all the edges terminating at a particular vertex given an adjacency matrix representation of the graph? (Assume n vertices are in the graph and m edges terminate at the desired node).
+A. O(m)
+B. O(n)
+C. O(m²)
+D. O(n²)	D. O(n²)
+
+
+7. What graph traversal algorithm uses a queue to keep track of vertices which need to be processed?
+A. Breadth-first search.
+B. Depth-first search.	A. Breadth-first search is the correct answer.
+B. Depth-first search uses a stack.
+//
+
+
+8. Here is an adjacency list representation of a directed graph where there are no weights assigned to the edges). 
+ 
+
+See Question 8 for picture
+
+
+(a) Draw a picture of the directed graph that has the above adjacency list representation. 
+
+(b) Another way to represent a graph is an adjacency matrix. Draw the adjacency matrix for this graph.	Hand draw this one
+
+9. Which indicates pre-order traversal?
+
+A. Left sub-tree, Right sub-tree and root
+
+B. Right sub-tree, Left sub-tree and root
+
+C. Root, Left sub-tree, Right sub-tree
+
+D. Right sub-tree, root, Left sub-tree	Correct answer is C
+
+
+A. Left sub-tree, Right sub-tree and root // postorder
+
+B. Right sub-tree, Left sub-tree and root / / right never goes before left
+
+D. Right sub-tree, root, Left sub-tree / / right never goes before left
+
+10. Which of these methods can be used to obtain set of all keys in a map?
+a) getAll()
+b) getKeys()
+c) keyall()
+d) keySet()	d) keySet()
+
+11. Draw the AVL Tree resulted from reading this sequence of numbers 10, 11, 12, 13, 14, 15, 16, 17	Hand draw this one
+
+
+12. If the binary tree below is printed by a preorder traversal, what will the result be? 
+ 
+
+See Handout
+
+A. 9 4 17 16 12 11 6 
+B. 9 17 6 4 16 22 12 
+C. 6 9 17 4 16 22 12 
+D. 6 17 22 9 4 16 12 
+E. 6 17 9 4 22 16 12	E. 6 17 9 4 22 16 12
+
+
+13. A graph implementation that uses a two-dimensional array to represent the edges would be most reasonable for which of the following cases? 
+
+A. 1000 nodes, 1200 edges 
+B. 100 nodes, 4000 edges
+C. 1000 nodes, 10000 edges 
+D. 10 nodes, 20 edges
+E. none of these, since a graph can only be represented by a linked structure.	D. 10 nodes, 20 edges 102 -20 = 80 wasted
+14. A binary tree is constructed of nodes that are instances of the following class: 
+
+public class Node 
+{ 
+public int val; 
+public Node left; 
+public Node right; 
+} 
+Consider the following method: 
+public static Node mystery(Node root) {
+ if (root.right == null) 
+return root; 
+else return mystery(root.right); 
+} 
+You consult three supposedly tech-savvy consultants, and you get the following three opinions about what the method does when passed a reference to the root node of a binary tree: 
+
+I. It returns the last node visited by an inorder traversal 
+II. It returns the last node visited by a postorder traversal 
+III. It returns the last node visited by a level-order traversal 
+
+Which of these opinions is correct regardless of the contents of the tree? 
+A. I only 
+B. II only 
+C. III only 
+D. I and III 
+E. II and III	A. I only
+
+
+15. The following Java method uses recursion to search for a key in the binary search tree whose root node is referred to by the parameter root. If it finds the key, it returns a reference to the corresponding data item. If it doesn't find it, it returns null. 
+
+public static Object searchTree(Node root, int key) { 
+if (root == null) return null; 
+else if (key == root.key) return root.data; 
+else if (key < root.key) return searchTree(root.left, key); 
+else return searchTree(root.right, key); } 
+
+In the space below, rewrite the search() method so that it uses iteration instead of recursion:	public static Object searchTree(Node root, int key) 
+{ 
+ while (root != null)
+ {
+ if (key == root.key) // found it
+ return root.data; 
+else if (key < root.key) // less than so go left
+root = root.left; 
+else // greater than so go right
+root = root.right; 
+
+}
+return null; // we didn't find it or throw not found exception
+}
+
+
+16. Questions about binary trees refer to the definitions on the last page for BinaryTree, BinarySearchTreeInterface, BinarySearchTree, and Node. 
+
+1. Briefly explain why the root data member in the BinaryTree class is declared to be protected?
+
+2. Briefly explain why the Node class is declared to be static? 
+
+ 3. Write a recursive BinaryTree method named count_leaves that returns the number of leaves in the tree.	1. So BinarySearchTree(the subclass) can also use it.
+
+2. Because the Node class doesn't need to be bound to a single instance of the parent class
+
+3. public int count_leaves(Node node)
+{
+ if(node == null)
+ return 0;
+return 1 + count_leaves(node.left) + count_leaves(node.right);
+}
+
+
+17. Suppose that you would like to create an instance of a new Map that has an iteration order that is the same as the iteration order of an existing instance of a Map. Which concrete implementation of the Map interface should be used for the new instance?
+
+A. TreeMap
+B. HashMap
+C. LinkedHashMap
+D. The answer depends on the implementation of the existing instance.	C. LinkedHashMap // LinkedHashMap preserves the insertion order.
+
+
+18. In the Java standard library, the Iterator interface defines a method called "remove". What remove() is supposed to do (when it's implemented, which is optional), is remove the element that was most recently returned by next(). If you were to implement remove() what would you expect the worst case time complexity to be for one call to remove() for each of the following data structures (assume there are N elements in the data structure).
+
+a. A LinkedList (assume doubly-linked, if that matters) 
+
+b. A Hash Table (assume the table size is M and chaining is used, if that matters)	a. A LinkedList (assume doubly-linked, if that matters) O(n) because it has to visit each node
+
+b. A Hash Table (assume the table size is M and chaining is used, if that matters) O(n) because worst case all the elements are in the same chain and the one you're looking for is last, so it would have to visit each link in the chain
+
+
+19. We have a hash table of size 7 to store integer keys, with linear probing and a hash function h(x) = x mod 7 (x mod 7 return the remainder of the integer division with 7). Show the content of the hashtable after inserting the keys 0,11,3,7,1,9 in the given order.	0: 0 
+1: 7 b/c index 0 was taken
+2: 1 b/c index 1 was taken
+3: 3
+4: 11
+5: 9 b/c index 2 was taken and so was 3 and 4 
+6:
+
+
+20. Mark all properties that are TRUE for a hashtable with n elements? 
+(a) an ideal hash table using array doubling has worst-case time complexity of O(1) for every insert operation 
+(b) an ideal hash table using array doubling has average-case time complexity of O(1) for lookups 
+(c) can be used to sort an array of n real numbers with average-case time complexity O(n) 
+(d) it is possible to have different keys being hashed to the same position in the array	(b) an ideal hash table using array doubling has average-case time complexity of O(1) for lookups 
+
+(d) it is possible to have different keys being hashed to the same position in the array
+
+
+21. Create a recursive algorithm that given the TreeNode structure shown below, it calculates the height of a tree. The signature of the method is as follows:
+
+The TreeNode structure is as follows:
+
+public class TreeNode<T>
+{
+ public <T> content;
+ public TreeNode<T> leftRoot;
+ public TreeNode<T> rightNode;
+}	public static int height(TreeNode node)
+{
+ if(node == null) // base case
+ return 0;
+ int leftCount = height(node.leftRoot); // count all left nodes
+ int rightCount = height(node.rightNode); // count all right nodes
+ if(leftCount >= rightCount)) // return the greater of left and right
+ return leftCount + 1;
+ else 
+ return rightCount + 1 
+}
+
+
+22. A binary tree is considered to be perfect if all the leaves are at the same level and every non-leaf node has exactly two children. An empty tree is considered to be perfect. Given the following data structure called TreeNode, write a recursive algorithm that determines if a tree is perfect. Assume you can use the method created on (20) to obtain the height of a tree. 
+
+The signature of the method is as follows:
+
+public class TreeNode<T>
+{
+ public <T> content;
+ public TreeNode<T> leftRoot;
+ public TreeNode<T> rightNode;
+}	public boolean isPerfect(TreeNode node)
+ {
+ if(node == null)
+ return true;
+ else if(height(node.leftRoot) != height(node.rightNode)) 
+ return false;
+ else
+ return isPerfect(node.leftRoot) && isPerfect(node.rightNode); 
+ }
+
+
+23. Given the complete tree shown below and stored using the array representation of trees (for an element at position i, the left child is on position 2*i + 1, right child is on position 2*(i+1) ), return the height of the tree.
+[1, 2, 3 , 4 , 5, 6, 8, 10, 12, 13, 15]	height = 3
+
+
+24. Given the the following trees stored as arrays, which of them represent a heap?
+
+treeA = [13, 21,16, 24, 31, 19, 68, 65, 26, 32]
+
+treeB = [13, 21, 16, 6, 31, 19, 68, 65, 26, 32]	treeA = [13, 21,16, 24, 31, 19, 68, 65, 26, 32] minHeap
+
+
+25. Given the following elements, insert them into an empty min heap: 12, 5, 15, 9, 13, 7, 15, 10, 3, 20, 4	[12] insert 5
+[12, 5] 12 ? 5 = 5 swap
+[5, 12] insert 15
+[5, 12, 15] 5 ? 12 ? 15 = 5 ok, insert 9
+[5, 12, 15, 9] 12 ? 9 = 9 swap
+[5, 9, 15, 12] insert 13
+[5, 9, 15, 12, 13] 9 ? 12 ? 13 = 9 ok, insert 7
+[5, 9, 15, 12, 13, 7] 15 ? 7 = 7 swap , insert 15
+→ [5, 9, 7, 12, 13, 15, 15] ←
+
+
+26. Suppose that we have int values between 1 and 1000 in a binary search tree, and we search for value 363. Which of the following cannot be a sequence of values examined to obtain the value 363?
+
+(a) 2 252 401 398 330 363
+(b) 399 387 219 266 382 381 278 363
+(c) 3 923 220 911 244 898 258 362 363
+(d) 4 924 278 347 621 299 392 358 363 
+(e) 5 925 202 910 245 363	(d) 4 924 278 347 621 299 392 358 363 363 is > 347, so everything to the right of 347 should be greater than 347
+
+
+27. Given the following array:
+
+[20, 3 , 4, 5 , 6, 1, 10, 15, 16, 2, 8]
+
+How does the array look like after one iteration of heapsort in ascending order?
+
+
+Assume the following:
+1. One iteration of heapsort is after the removal of the first element in the heap
+2. Assume that the removed element from the heap is inserted on a new array
+
+Long Explanation in handout	→ [16, 15, 10, 8, 6, 1 ,4, 3, 5, 2] <--
+28. What is the worst-time complexity on looking for an element on a binary search tree?	O(n), worst case scenario the values come in inorder and all the nodes are on one side.
+29. What advantage does balanced trees provide over BST?	balanced trees best and worst search time is O(log n), BST's worst is O(n).
+30. What is the height of a full binary search tree with n elements?	log2(n)
+31. Password checker. Write a program that uses hash tables and reads in a string from the command line and a dictionary of words from standard input, and checks whether it is a "good" password. Here, assume "good" means that it (i) is at least 8 characters long, (ii) is not a word in the dictionary, (iii) is not a word in the dictionary followed by a digit 0-9 (e.g., hello5), (iv) is not two words separated by a digit (e.g., hello2world)	public class HelloWorld{
+
+ public static void main( String[] args)
+ {
+ System.out.println("Enter a password. length >=8, doesn't contain a word in the dictionary");
+ Scanner scan = new Scanner(System.in); 
+ String password = scan.next().trim(); //get input
+ if(password.length() < 8) // test char count
+ {
+ System.out.println("bad. too small");
+ }
+ else
+ {
+ System.out.println("Enter in dictionary of words. Enter 0 when finished");
+ Hashtable dict = new Hashtable();
+ String input = "";
+ while(!input.equals("0")) // get dictionary of words
+ {
+ input = scan.next().trim().toLowerCase();
+ dict.put(input, input);
+ }
+
+ String[] test = scan.next().trim().split("[0-9]+"); // "[0-9]+" is a regular expression looks for a sequence of numbers
+ boolean isGood = true;
+ for(int i = 0; i< test.length) && isGood; i++)
+ {
+ System.out.println(test[i]);
+ if(dict.contains(test[i].toLowerCase()))
+ {
+ isGood = false;
+ }
+ }
+
+ 
+ if(isGood)
+ System.out.println("\nGood");
+ else
+ System.out.println("\nBAD"); 
+ }
+ }
+
+
+
+
+}
